@@ -263,3 +263,164 @@ body.large-type .hero-invitation,body.large-type .preparation-intro,body.large-t
  .preparation-steps li{font-size:15px;padding:12px 14px}
 }
 @media(max-width:359px){.preparation-page .section-inner{padding-left:16px;padding-right:16px}}
+
+/* 活动信息两栏等宽、等高，统一内边距；手机改为自然高度，避免空白和裁切。 */
+:root{--information-card-padding:28px;--information-card-radius:20px}
+#details .details-layout{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:24px}
+#details .details-content,#details .fee-card{padding:var(--information-card-padding);border:1px solid #dbe6f3;border-radius:var(--information-card-radius);background:#fff;box-shadow:0 8px 28px #163b7605;min-width:0}
+#details .details-content{display:flex;flex-direction:column}
+.information-card-title{font-size:18px;font-weight:600;line-height:1.6;color:var(--ink);padding-bottom:18px;margin-bottom:2px;border-bottom:1px solid var(--line)}
+#details .event-info{display:grid;grid-template-rows:repeat(5,auto);align-content:space-between;flex:1}
+#details .event-info>div{padding:16px 0;gap:16px;grid-template-columns:72px minmax(0,1fr)}
+#details .event-info>div:first-child{padding-top:16px}
+#details .event-info>div:last-child{padding-bottom:0}
+#details .event-info dt{font-size:15px;line-height:28px}
+#details .event-info dd{font-size:18px;line-height:1.75}
+#details .event-info dd span{font-size:15px;margin-top:2px}
+#details .fee-card{display:flex;flex-direction:column;justify-content:space-between;gap:26px}
+#details .fee-card .small-label{font-size:16px;font-weight:600;line-height:1.6;margin:0 0 12px}
+#details .fee-card .price{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:8px;row-gap:0;margin:0 0 16px;line-height:1.25}
+#details .fee-card .price>[data-family-fee],#details .fee-card .price>[data-organization-fee]{font-size:36px;font-weight:650;letter-spacing:-.03em}
+#details .fee-card .price>span:last-child{font-size:17px;color:var(--muted);font-weight:400;letter-spacing:0}
+#details .family-fee>p:last-child,#details .organization-fee>p:last-child{font-size:16px;line-height:1.85;color:var(--muted);margin:0}
+#details .organization-fee{margin:0;padding-top:24px;border-top:1px solid var(--line)}
+#details .organizer{display:flex;align-items:baseline;justify-content:center;flex-wrap:wrap;gap:4px 12px;line-height:1.8}
+#details .organizer strong{margin:0}
+.exchange-layout,.audience-layout{align-items:start}
+.exchange-copy{padding-top:4px}
+.preparation-layout>*,.preparation-steps>*{min-width:0}
+body.large-type #details .family-fee>p:last-child,body.large-type #details .organization-fee>p:last-child,body.large-type #details .event-info dd{font-size:20px}
+@media(max-width:899px){
+ #details .details-layout{grid-template-columns:minmax(0,1fr);gap:18px}
+ #details .details-content,#details .fee-card{padding:24px;border-radius:18px}
+ #details .event-info{align-content:start}
+ #details .organizer{justify-content:flex-start}
+ .exchange-copy{padding-top:0}
+}
+@media(max-width:480px){
+ #details .details-content,#details .fee-card{padding:20px;border-radius:16px}
+ #details .details-layout{gap:16px;margin-top:22px}
+ .information-card-title{font-size:17px;padding-bottom:14px}
+ #details .event-info>div{grid-template-columns:62px minmax(0,1fr);gap:12px;padding:14px 0}
+ #details .event-info>div:first-child{padding-top:14px}
+ #details .event-info dt{font-size:14px;gap:6px}
+ #details .event-info dd{font-size:17px;line-height:1.75}
+ #details .event-info dd span{font-size:14px}
+ #details .fee-card{gap:22px}
+ #details .fee-card .price>[data-family-fee],#details .fee-card .price>[data-organization-fee]{font-size:32px}
+ #details .fee-card .price>span:last-child{font-size:16px}
+ #details .family-fee>p:last-child,#details .organization-fee>p:last-child{font-size:16px;line-height:1.85}
+ #details .organization-fee{padding-top:22px}
+ #details .organizer{font-size:13px;gap:2px 8px}
+ .section-inner,.exchange-page .section-inner,#program.exchange-page .section-inner,.preparation-page .section-inner{padding-left:20px;padding-right:20px}
+ .hero h1{letter-spacing:-.04em}
+ .preparation-steps{align-items:stretch}
+ .preparation-steps li{display:flex;flex-direction:column;justify-content:center;min-height:84px}
+}
+@media(max-width:359px){
+ .section-inner,.exchange-page .section-inner,#program.exchange-page .section-inner,.preparation-page .section-inner{padding-left:16px;padding-right:16px}
+ #details .details-content,#details .fee-card{padding:18px}
+ #details .event-info>div{grid-template-columns:58px minmax(0,1fr);gap:10px}
+ #details .fee-card .price>[data-family-fee],#details .fee-card .price>[data-organization-fee]{font-size:30px}
+}
+
+/* 全页使用同一套字体层级、内容宽度和左右边距。 */
+:root{--copy-size:17px;--copy-leading:1.85;--section-heading-size:34px;--subheading-size:22px;--page-gutter:32px;--page-width:1120px;--section-space:60px;--column-gap:40px;--content-radius:18px}
+body{font-size:var(--copy-size);line-height:var(--copy-leading)}
+body.large-type{--copy-size:20px}
+main h1,main h2,main h3{font-family:inherit;letter-spacing:-.025em;font-weight:600}
+.section:is(#practice,#program,#agenda,#support,#families,#details,#preparation)>.section-inner{width:100%;max-width:var(--page-width);padding:var(--section-space) var(--page-gutter);margin:0 auto}
+main .section:is(#program,#agenda,#support,#families,#details,#preparation) h2{font-size:var(--section-heading-size);line-height:1.5;max-width:none;margin:0;text-align:left}
+main .eyebrow{font-size:14px;line-height:1.6;font-weight:500;letter-spacing:0;margin:0 0 16px}
+.hero-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--column-gap);align-items:start}
+.hero-visual{margin:0;min-width:0}
+.hero-visual img{width:100%;max-width:100%;margin:0;border-radius:var(--content-radius);aspect-ratio:3/2;object-fit:cover}
+.hero-visual figcaption{font-size:12px;text-align:left;line-height:1.6;margin:8px 0 0}
+.hero .lead,.hero-preparation,.hero-invitation{font-size:var(--copy-size);line-height:var(--copy-leading);font-weight:400;letter-spacing:0;margin-top:18px}
+.hero .lead{color:var(--ink)}
+.hero-preparation,.hero-invitation{color:var(--muted)}
+.hero h1{font-weight:600;line-height:1.3}
+.hero-partners{font-size:18px;line-height:1.65;font-weight:600}
+.event-subtitle{font-size:20px;line-height:1.7;font-weight:500}
+.hero-meta{margin:22px 0;padding:0}
+.hero-meta>span{font-size:15px;line-height:1.7}
+.hero-actions{margin-top:18px}
+/* 标题跨越两栏，图片和正文使用同一条顶部基线。 */
+.exchange-layout{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px var(--column-gap);align-items:start}
+.exchange-heading{display:contents}
+.exchange-heading>.eyebrow{grid-column:1/-1;grid-row:1;margin:0;order:initial}
+.exchange-heading>h2{grid-column:1/-1;grid-row:2;order:initial}
+.exchange-heading>.exchange-visual{grid-column:1;grid-row:3;margin:0;order:initial}
+.exchange-copy{grid-column:2;grid-row:3;padding:0;font-size:var(--copy-size);line-height:var(--copy-leading);order:initial}
+.exchange-visual img{aspect-ratio:3/2;border-radius:var(--content-radius)}
+.exchange-copy>p,.guest-profile>p:last-child,.agenda-session>p:last-child{font-size:var(--copy-size);line-height:var(--copy-leading);font-weight:400}
+.exchange-copy .exchange-lead{font-size:var(--subheading-size);line-height:1.6;font-weight:600;margin:0 0 22px}
+.guest-profile{padding:0 0 0 20px;margin:0 0 24px}
+.guest-profile strong{font-weight:600}
+.exchange-copy>p+p{margin-top:18px}
+.exchange-copy .exchange-takeaway{font-size:var(--copy-size);line-height:var(--copy-leading);margin-top:24px;padding-top:20px}
+.agenda-session h3,.organization h3{font-size:var(--subheading-size);line-height:1.6;font-weight:600}
+.agenda-session .small-label{font-size:14px;line-height:1.6;margin-bottom:8px}
+.agenda-session>p:last-child{margin-top:12px}
+.workshop-label{font-size:14px;line-height:1.6;font-weight:400}
+.duration-label{font-size:14px!important;line-height:1.6!important;margin:0 0 18px;padding:6px 14px}
+.audience-layout{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--column-gap);align-items:start;margin-top:26px}
+.audience-content>p,.organization p{font-size:var(--copy-size);line-height:var(--copy-leading)}
+.audience-content .connection-note{font-size:var(--copy-size);line-height:var(--copy-leading)}
+.age-card{padding:24px;border-radius:var(--content-radius);margin-bottom:22px}
+.age-card strong,.age-card span{font-size:var(--subheading-size);line-height:1.65;font-weight:600}
+.age-card .small-label{font-size:14px;line-height:1.6}
+.audience-visual{margin:0}
+.audience-visual img{aspect-ratio:3/2;border-radius:var(--content-radius);object-fit:cover}
+.preparation-layout{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--column-gap)}
+.preparation-intro,.preparation-content{font-size:var(--copy-size);line-height:var(--copy-leading)}
+.preparation-intro{max-width:none}
+.preparation-steps li{font-size:var(--copy-size);line-height:1.7}
+.closing-message{width:100%;max-width:var(--page-width);padding:32px var(--page-gutter);margin:0 auto;font-size:22px;line-height:1.7}
+.closing-message p+p{font-size:var(--copy-size);line-height:var(--copy-leading)}
+.masthead,.nav-inner{max-width:var(--page-width);padding-left:var(--page-gutter);padding-right:var(--page-gutter)}
+.sticky-cta{padding-left:var(--page-gutter);padding-right:var(--page-gutter)}
+.sticky-inner{max-width:calc(1120px - 64px)}
+/* 大字模式只调整正文，不在不同区块混用旧字号。 */
+body.large-type .hero-preparation,body.large-type .hero-invitation,body.large-type .guest-profile>p:last-child,body.large-type .exchange-copy .exchange-takeaway,body.large-type .organization p,body.large-type .connection-note,body.large-type .preparation-intro,body.large-type .preparation-content,body.large-type .preparation-steps li{font-size:var(--copy-size);line-height:var(--copy-leading)}
+@media(max-width:899px){
+ :root{--page-width:668px;--page-gutter:24px;--section-space:40px;--section-heading-size:30px;--subheading-size:22px;--column-gap:26px}
+ .hero-top,.exchange-layout,.audience-layout,.preparation-layout{grid-template-columns:minmax(0,1fr);gap:24px;max-width:none}
+ .hero-visual{margin:0}
+ .hero-visual img,.audience-visual img,.exchange-visual img{aspect-ratio:16/10}
+ .hero-meta{padding:16px 18px}
+ .exchange-heading>.eyebrow{grid-column:1;grid-row:1;margin:0}
+ .exchange-heading>h2{grid-column:1;grid-row:2}
+ .exchange-copy{grid-column:1;grid-row:3;padding:0}
+ .exchange-heading>.exchange-visual{grid-column:1;grid-row:4;margin:0}
+ .preparation-content{padding-top:0}
+ .audience-layout{margin-top:24px}
+ .sticky-inner{max-width:calc(668px - 48px)}
+}
+@media(max-width:480px){
+ :root{--page-gutter:20px;--section-space:34px;--section-heading-size:27px;--subheading-size:21px;--content-radius:16px}
+ .masthead{padding-top:14px;padding-bottom:14px}
+ .hero h1{font-size:38px}
+ .hero-partners{font-size:17px}
+ .event-subtitle{font-size:18px}
+ .hero .lead,.hero-preparation,.hero-invitation{margin-top:16px}
+ .hero-top,.exchange-layout,.audience-layout,.preparation-layout{gap:22px}
+ .hero-visual figcaption{font-size:11px}
+ .exchange-copy .exchange-lead{font-size:var(--subheading-size)}
+ .age-card{padding:20px}
+ .guest-profile{padding-left:16px}
+ .preparation-steps li{font-size:16px}
+ .closing-message{font-size:20px}
+ .nav-inner{padding-left:12px;padding-right:12px}
+ .nav-inner a{font-size:13px}
+ .sticky-cta{padding-left:16px;padding-right:16px}
+}
+@media(max-width:359px){
+ :root{--page-gutter:16px;--section-heading-size:26px;--subheading-size:20px}
+ .hero h1{font-size:34px}
+ .nav-inner a{font-size:12px}
+}
+@media print{.exchange-heading{display:contents}.exchange-layout{grid-template-columns:1fr 1fr}.exchange-copy{grid-row:3;grid-column:2}.exchange-heading>.exchange-visual{grid-row:3;grid-column:1}}
+
+#details .family-fee>p:last-child,#details .organization-fee>p:last-child{font-size:var(--copy-size);line-height:var(--copy-leading)}
+body.large-type .exchange-copy .exchange-lead{font-size:var(--subheading-size);line-height:1.6}
