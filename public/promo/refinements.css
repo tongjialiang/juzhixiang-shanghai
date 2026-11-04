@@ -1,0 +1,265 @@
+/* 四个内容导航入口同时显示，报名操作保留在底部固定栏。 */
+html{scroll-behavior:smooth}
+.section-nav{position:sticky;top:0;z-index:12;overflow:visible;background:rgba(255,255,255,.98);box-shadow:0 4px 18px #163b7608}
+.nav-inner{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));max-width:1120px;gap:10px;padding:10px 32px;overflow:visible}
+.nav-inner a{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;min-height:44px;padding:8px 10px;border-radius:10px;font-size:14px;line-height:1.4;color:var(--muted);transition:background .15s,color .15s}
+.nav-number{font-size:11px;opacity:.65;font-variant-numeric:tabular-nums}
+.nav-inner a:hover,.nav-inner a[aria-current]{background:#edf4ff;color:var(--blue);font-weight:600}
+.nav-inner .nav-apply{background:var(--blue);color:#fff;font-weight:600}
+.nav-inner .nav-apply:hover,.nav-inner .nav-apply[aria-current]{background:var(--blue-dark);color:#fff}
+.section,#support{scroll-margin-top:88px}
+a:focus-visible,button:focus-visible{outline-color:var(--blue)}
+.wordmark,.wordmark>span:last-child{min-width:0}
+.wordmark{flex:1}
+.type-toggle{flex-shrink:0}
+
+/* 统一留白和卡片层次，费用与参与条件优先于装饰图片。 */
+#families .section-inner,#details .section-inner{padding-top:56px;padding-bottom:56px}
+#families .eyebrow,#details .eyebrow{margin-bottom:16px}
+#families h2,#details h2{font-size:clamp(26px,3vw,36px)}
+.hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:14px 22px}
+.hero-actions .button{width:auto;max-width:none}
+.lookup-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:15px;font-weight:500;line-height:1.5}
+.lookup-link:hover{text-decoration:underline;text-underline-offset:4px}
+.theme-card{border-color:#dce7f5;box-shadow:0 6px 20px #163b7604}
+.theme-description{color:#43566c}
+.audience-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;margin-top:26px}
+.audience-layout>*,.details-layout>*,.application-layout>*,.hero-top>*{min-width:0}
+.audience-content{padding-top:0}
+.audience-visual{margin:0}
+.audience-visual img,.hero-visual img{border-radius:18px}
+.age-card{padding:22px 24px;background:var(--pale);margin-bottom:20px}
+.age-card .small-label{margin-bottom:8px}
+.age-card strong,.age-card span{font-size:21px}
+.organization{margin-top:22px;padding-top:20px}
+.organization h3{font-size:21px}
+.connection-note{color:var(--muted);font-size:16px}
+.details-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:32px;margin-top:26px;align-items:start}
+#details .fee-card{margin:0;padding:28px;background:#fff;border:1px solid var(--line)}
+.price>[data-family-fee]{font-size:40px;font-weight:650}
+.fee-card .fee-caption{border-top:1px solid var(--line);padding-top:16px;margin-top:20px;color:var(--muted);font-size:14px}
+.details-content{padding:24px 28px;background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+.event-info>div{padding:14px 0;grid-template-columns:76px minmax(0,1fr);gap:12px}
+.event-info>div:last-child{border-bottom:0;padding-bottom:0}
+.event-info dd{font-size:18px}
+.event-info dd strong{font-size:22px}
+.organizer{margin-top:22px;font-size:15px;text-align:center}
+.organizer strong{display:inline-block;margin-left:10px}
+#apply .apply-card{border-color:#d3e2f7;background:var(--pale);box-shadow:0 6px 20px #163b7604}
+.application-lookup{font-size:14px;margin-top:4px}
+.sticky-cta{box-shadow:0 -4px 24px #163b7610}
+.sticky-inner>*,.sticky-price{min-width:0}
+.sticky-price strong>[data-family-fee]{font-size:25px;font-weight:650}
+.sticky-price strong>span:last-child{white-space:nowrap}
+.sticky-cta .button{min-width:170px;justify-content:center}
+
+/* 大字模式保持正文可读，不以固定高度裁切内容。 */
+body.large-type .theme-card .theme-description{font-size:18px;line-height:1.75}
+body.large-type .theme-card .theme-note{font-size:15px}
+body.large-type .organization p,body.large-type .connection-note,body.large-type .fee-card p:not(.price):not(.small-label){font-size:18px}
+body.large-type #apply .lead,body.large-type .event-info dd{font-size:20px}
+
+@media(max-width:899px){
+ .nav-inner{padding:8px 20px;gap:6px}
+ .nav-inner a{padding:8px 4px;font-size:14px}
+ .nav-number{display:none}
+ .section,#support{scroll-margin-top:78px}
+ .masthead{padding-top:16px;padding-bottom:16px}
+ .brand-sub{max-width:360px;line-height:1.6}
+ .hero .section-inner{padding-top:30px}
+ .hero-visual{margin-top:24px}
+ .hero-visual img{width:100%;max-width:100%;margin:0;aspect-ratio:16/9;object-fit:cover}
+ #families .section-inner,#details .section-inner{max-width:668px;padding:36px 24px}
+ .audience-layout,.details-layout{grid-template-columns:minmax(0,1fr);gap:22px;margin-top:20px}
+ .audience-visual img{aspect-ratio:16/9;object-fit:cover}
+ .audience-content{padding:0}
+ .audience-content>p{font-size:17px;line-height:1.8}
+ .details-content{padding:22px 24px}
+ #details .fee-card{padding:24px}
+ .organizer{font-size:14px;text-align:left;margin-top:20px}
+ .organizer strong{margin-left:6px}
+ .practice-note{gap:14px}
+ .practice-note .speaker{margin-top:0}
+ .practice-note h2{display:flex;align-items:baseline;gap:8px}
+ .speaker-title{display:inline;margin:0;font-size:18px;font-weight:400}
+}
+
+@media(max-width:480px){
+ .nav-inner{padding:8px 12px;gap:4px}
+ .nav-inner a{font-size:13px;padding:8px 4px;border-radius:8px;white-space:nowrap}
+ .masthead{padding:14px 20px;gap:12px}
+ .wordmark{font-size:18px}
+ .brand-sub{font-size:11px;max-width:none;letter-spacing:0}
+ .brand-mark{width:36px;height:36px;flex-shrink:0}
+ .type-toggle{font-size:12px;min-height:44px;padding:7px 10px}
+ .section-inner{padding:36px 20px}
+ .hero .section-inner{padding-top:28px}
+ .hero h1{font-size:38px;line-height:1.3}
+ .event-subtitle{font-size:17px;line-height:1.7;margin-top:14px;margin-bottom:0}
+ .hero .lead{font-size:17px;line-height:1.8;margin-top:16px}
+ .hero-meta{padding:16px;margin:20px 0;gap:8px}
+ .hero-meta>span{font-size:15px}
+ .hero-actions{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px}
+ .hero-actions .button{width:100%;min-width:0;font-size:16px;padding:13px 15px;gap:10px}
+ .hero-actions .lookup-link{font-size:14px;gap:4px}
+ .hero .micro{font-size:12px;line-height:1.7}
+ .hero-visual{margin:22px 0 0}
+ .hero-visual figcaption{margin-left:0;font-size:11px}
+ .practice-note{margin-top:24px;padding-top:22px}
+ .practice-note h2{font-size:25px}
+ #families .section-inner,#details .section-inner{padding:30px 20px}
+ #families h2,#details h2{font-size:25px;line-height:1.4}
+ .age-card{padding:18px;margin-bottom:16px;border-radius:16px}
+ .age-card strong,.age-card span{font-size:20px}
+ .organization h3{font-size:19px}
+ .organization p{font-size:16px;line-height:1.8}
+ .audience-content .connection-note{font-size:15px}
+ .details-content,#details .fee-card{padding:20px;border-radius:16px}
+ .price{margin-bottom:14px}
+ .price>[data-family-fee]{font-size:36px}
+ .price>span:last-child{font-size:18px}
+ .event-info>div{grid-template-columns:66px minmax(0,1fr);gap:10px}
+ .event-info dt{font-size:14px;gap:6px}
+ .event-info dd{font-size:17px}
+ .event-info dd span{font-size:14px}
+ .event-info dd strong{font-size:21px}
+ .organizer strong{margin-left:0}
+ #apply .application-help{font-size:13px;line-height:1.75}
+ .sticky-cta{padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+ .sticky-cta .button{min-width:132px;padding:13px 18px;font-size:16px;gap:14px;white-space:nowrap}
+ .sticky-price strong>[data-family-fee]{font-size:23px}
+ .sticky-price strong>span:last-child{font-size:13px}
+ .sticky-price small{font-size:11px}
+ .site-footer{padding-top:26px;padding-bottom:118px;font-size:12px;line-height:1.8}
+}
+
+@media(max-width:359px){
+ .nav-inner a{font-size:12px}
+ .masthead{padding-left:16px;padding-right:16px}
+ .section-inner,#program .section-inner,#families .section-inner,#details .section-inner,#apply .section-inner{padding-left:16px;padding-right:16px}
+ .hero h1{font-size:34px}
+ .hero-actions .button{font-size:15px;padding-left:12px;padding-right:12px}
+ .hero-actions .lookup-link{font-size:13px}
+ .sticky-cta{padding-left:14px;padding-right:14px}
+ .sticky-cta .button{min-width:122px;padding-left:14px;padding-right:14px}
+ .sticky-price strong>[data-family-fee]{font-size:21px}
+}
+
+@media print{
+ .section-nav{display:none}
+ .audience-layout,.details-layout{grid-template-columns:1fr 1fr;gap:20px}
+ .theme-card,.details-content,.fee-card{box-shadow:none}
+}
+
+/* 新版文案保留完整内容，交流区和报名区沿用原有紧凑布局。 */
+.hero-preparation{font-size:17px;line-height:1.8;color:var(--muted);margin-top:14px}
+.hero-actions{margin-top:22px}
+.theme-card .theme-question{font-size:16px;line-height:1.75;color:var(--blue);margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.theme-card .afternoon-title{margin-top:20px}
+.organization-fee{border-top:1px solid var(--line);padding-top:22px;margin-top:24px}
+.organization-fee>.price>[data-organization-fee]{font-size:34px;font-weight:650}
+.organization-fee>.price{margin-bottom:14px}
+.organization-fee>p:last-child{color:var(--muted)}
+#apply .entry-copy h3{font-size:18px}
+#apply .meeting-note{color:var(--blue);font-weight:500;margin-top:14px}
+body.large-type .hero-preparation,body.large-type .theme-card .theme-question{font-size:19px}
+@media(max-width:480px){
+ .hero-preparation{font-size:16px}
+ .theme-card .theme-question{font-size:15px;margin-top:12px;padding-top:10px}
+ .theme-card .afternoon-title{margin-top:16px}
+ .organization-fee>.price>[data-organization-fee]{font-size:30px}
+ #apply .entry-copy h3{font-size:16px;line-height:1.5}
+}
+
+/* 报名操作统一放在底部固定栏，正文保留查询入口与扫码说明。 */
+.hero-actions{display:flex}
+#apply .registration-qr{grid-row:1}
+#apply .entry-copy{align-self:center}
+
+/* 删除独立申请区后，结尾寄语保持紧凑，底部按钮仍可直接进入报名。 */
+.closing-message{max-width:1120px;margin:0 auto;padding:32px;color:var(--blue);font-size:22px;line-height:1.7}
+.closing-message p{margin:0}
+.closing-message p+p{margin-top:10px;font-size:17px}
+.closing-message .meeting-note{font-weight:500}
+@media(max-width:480px){.closing-message{padding:28px 20px;font-size:19px}.closing-message p+p{font-size:16px}}
+
+/* 三项交流内容各占独立区块，电脑分栏，手机按标题、正文、配图顺序阅读。 */
+.exchange-page .section-inner,#program.exchange-page .section-inner{padding-top:64px;padding-bottom:64px}
+.exchange-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:64px;align-items:center}
+.exchange-heading,.exchange-copy{min-width:0}
+.exchange-heading h2,#program .exchange-heading h2{font-size:clamp(28px,3vw,38px);line-height:1.5}
+.exchange-visual{margin-top:28px}
+.exchange-visual img{border-radius:18px;aspect-ratio:3/2;object-fit:cover}
+.exchange-copy{font-size:17px;line-height:1.9}
+.exchange-copy>p+p{margin-top:20px}
+.exchange-copy .exchange-lead{font-size:24px;line-height:1.65;font-weight:600;color:var(--ink);margin-bottom:24px}
+.guest-profile{border-left:3px solid var(--blue);padding:2px 0 2px 22px;margin-bottom:24px}
+.guest-profile .small-label{margin-bottom:8px}
+.guest-profile h3{font-size:25px}
+.guest-profile h3 span{font-size:17px;font-weight:400;margin-left:6px}
+.guest-profile .guest-name{font-size:14px;color:var(--muted);margin-top:4px;margin-bottom:14px}
+.guest-profile>p:last-child{font-size:16px;line-height:1.8;color:var(--muted)}
+.exchange-copy .exchange-takeaway{border-top:1px solid var(--line);padding-top:20px;margin-top:26px;color:var(--blue);font-size:18px;line-height:1.85}
+.agenda-session+.agenda-session{border-top:1px solid var(--line);padding-top:24px;margin-top:24px}
+.agenda-session .small-label{margin-bottom:8px}
+.agenda-session h3{font-size:22px;line-height:1.6}
+.agenda-session>p:last-child{margin-top:12px}
+.workshop-label{display:block;font-size:14px;font-weight:400;letter-spacing:.03em;color:var(--muted);margin-top:4px}
+.duration-label{display:inline-block;padding:6px 14px;background:#fff;border:1px solid var(--line);border-radius:30px;font-size:14px;color:var(--blue);margin-bottom:18px}
+body.large-type .exchange-copy{font-size:20px}
+body.large-type .guest-profile>p:last-child,body.large-type .exchange-copy .exchange-takeaway{font-size:20px}
+@media(max-width:899px){
+ .exchange-page .section-inner,#program.exchange-page .section-inner{max-width:668px;padding:40px 24px}
+ .exchange-layout{grid-template-columns:minmax(0,1fr);gap:26px}
+ .exchange-heading{display:contents}
+ .exchange-heading .eyebrow{margin-bottom:-12px;order:0}
+ .exchange-heading h2{order:1}
+ .exchange-copy{order:2}
+ .exchange-visual{order:3;margin-top:0}
+ .exchange-visual img{aspect-ratio:16/9}
+ .exchange-copy .exchange-lead{font-size:22px;margin-bottom:20px}
+}
+@media(max-width:480px){
+ .exchange-page .section-inner,#program.exchange-page .section-inner{padding:36px 20px}
+ .exchange-heading h2,#program .exchange-heading h2{font-size:28px;line-height:1.5}
+ .exchange-layout{gap:24px}
+ .exchange-copy{font-size:17px;line-height:1.9}
+ .exchange-copy .exchange-lead{font-size:21px}
+ .guest-profile{padding-left:18px}
+ .guest-profile h3{font-size:24px}
+ .agenda-session h3{font-size:21px}
+ .exchange-copy .exchange-takeaway{font-size:17px;margin-top:24px;padding-top:18px}
+}
+@media(max-width:359px){.exchange-page .section-inner,#program.exchange-page .section-inner{padding-left:16px;padding-right:16px}}
+@media print{.exchange-layout{grid-template-columns:1fr 1fr;gap:24px}.exchange-page{break-inside:avoid}.exchange-heading{display:block}}
+
+/* 按活动方文案顺序展示首屏与六部分正文，报名操作仍集中在固定栏。 */
+.hero-partners{font-size:19px;color:var(--blue);font-weight:600;margin-top:22px}
+.hero-invitation{font-size:17px;line-height:1.85;color:var(--muted);margin-top:18px}
+.hero-partners+.event-subtitle{margin-top:14px}
+.guest-profile strong{font-weight:600;color:var(--ink)}
+.preparation-page .section-inner{padding-top:52px;padding-bottom:44px}
+.preparation-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:start}
+.preparation-page h2{font-size:clamp(28px,3vw,36px);line-height:1.5}
+.preparation-intro{font-size:17px;line-height:1.85;color:var(--muted);margin-top:20px;max-width:420px}
+.preparation-content{font-size:16px;line-height:1.85}
+.preparation-steps{display:grid;grid-template-columns:1fr 1fr;gap:14px;list-style:none;margin:0 0 24px;padding:0}
+.preparation-steps li{padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--pale);font-size:16px;line-height:1.7}
+.preparation-steps span{display:block;font-size:12px;font-weight:600;color:var(--blue);margin-bottom:4px}
+.preparation-notice{color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:16px;margin-top:18px}
+body.large-type .hero-invitation,body.large-type .preparation-intro,body.large-type .preparation-content,body.large-type .preparation-steps li{font-size:20px}
+@media(max-width:899px){
+ .preparation-page .section-inner{max-width:668px;padding:36px 24px}
+ .preparation-layout{grid-template-columns:minmax(0,1fr);gap:24px}
+ .preparation-intro{max-width:none;margin-top:16px}
+}
+@media(max-width:480px){
+ .hero-partners{font-size:17px;margin-top:18px}
+ .hero-invitation{font-size:16px}
+ .preparation-page .section-inner{padding:32px 20px}
+ .preparation-page h2{font-size:27px}
+ .preparation-intro{font-size:16px}
+ .preparation-steps{gap:10px;margin-bottom:20px}
+ .preparation-steps li{font-size:15px;padding:12px 14px}
+}
+@media(max-width:359px){.preparation-page .section-inner{padding-left:16px;padding-right:16px}}

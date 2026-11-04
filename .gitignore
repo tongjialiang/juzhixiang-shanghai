@@ -1,0 +1,27 @@
+node_modules/
+.env
+.local/
+work/
+test-results/
+
+# 本机初始化脚本依赖上级私有需求文件，不上传。
+/scripts/configure-local.js
+# 旧说明保留在本机，仓库使用不含登录密码的新版说明。
+/README_v1.md
+/README_v2.md
+/README_v4.md
+/README_v5.md
+/README_v6.md
+/README_v7.md
+/README_v9.md
+/README_v10.md
+/测试报告_v3.md
+.env.*
+!.env.example
+*.log
+*.sql
+*.sql.gz
+*.pem
+*.key
+.DS_Store
+Thumbs.db
